@@ -1,4 +1,4 @@
-﻿namespace domain;
+﻿namespace Domain;
 
 /// <summary>
 /// Represents an individual team member, who is participating in the tea round.
