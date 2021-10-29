@@ -1,5 +1,8 @@
 ﻿namespace TeaRoundPicker.Domain;
 
+/// <summary>
+/// Represents an object that has an identity. Entities are compared by their identity; two entities with the same id are representing the same thing.
+/// </summary>
 public abstract class Entity<T>
 {
     public virtual T Id { get; protected set; }
