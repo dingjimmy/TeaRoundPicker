@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Domain\TeaRoundPicker.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
