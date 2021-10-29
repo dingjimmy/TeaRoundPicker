@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace TeaRoundPicker.Domain;
 
 /// <summary>
 /// Represents the logic for randomly picking a participant.

@@ -1,7 +1,7 @@
-using Domain;
+using TeaRoundPicker.Domain;
 using Xunit;
 
-namespace tests;
+namespace TeaRoundPicker.Tests;
 
 public class RandomPickerTests
 {
