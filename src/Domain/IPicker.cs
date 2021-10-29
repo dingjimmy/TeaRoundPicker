@@ -5,5 +5,5 @@
 /// </summary>
 public interface IPicker
 {
-    Participant PickParticipant(IEnumerable<Participant> participants);
+    Participant PickParticipant(IList<Participant> participants);
 }
