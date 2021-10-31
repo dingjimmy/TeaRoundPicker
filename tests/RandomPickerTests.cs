@@ -6,7 +6,7 @@ namespace TeaRoundPicker.Tests;
 public class RandomPickerTests
 {
     [Fact]
-    public void Pick_a_participant()
+    public void Pick_one_person_from_a_list_of_participants()
     {
         // arrange
         var participants = new[]
