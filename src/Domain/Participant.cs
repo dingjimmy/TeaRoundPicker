@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents an individual team member, who is participating in the tea round.
 /// </summary>
-public class Participant
+public class Participant : Entity<string>
 {
     /// <summary>
     /// Gets the name of the participant.
@@ -15,7 +15,7 @@ public class Participant
     /// </summary>
     /// <param name="name">The name of the new participant.</param>
     /// <exception cref="ArgumentException"></exception>
-    public Participant(string name)
+    public Participant(string name) : base(name)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
