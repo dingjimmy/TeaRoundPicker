@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.42.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\TeaRoundPicker.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
