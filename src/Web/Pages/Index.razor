@@ -1,9 +1,29 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Tea Round Picker</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Welcome to the tea round picker. Shall we begin...</h1>
 
-Welcome to your new app.
+<input type="text" value=@ParticipantName />
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="AddParticipant" >Add Participant</button>
+
+<div>
+    <button @onclick="PickParticipant">Pick!</button>
+</div>
+
+@code {
+    [Parameter]
+    public string? ParticipantName { get; set; }
+
+    private void AddParticipant()
+    {
+
+
+    }
+
+    private void PickParticipant()
+    {
+        
+    }
+}
