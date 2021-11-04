@@ -25,7 +25,10 @@ while (!readyToPick)
 
     _particpants.Add(newParticipant);
 
-    readyToPick = !AnsiConsole.Confirm("Add another participant?");
+    if (_particpants.Count >= 2)
+    {
+        readyToPick = !AnsiConsole.Confirm("Add another participant?");
+    }
 }
 
 var pickedParticipant = _picker.PickParticipant(_particpants);

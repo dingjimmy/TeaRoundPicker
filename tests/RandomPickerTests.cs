@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using TeaRoundPicker.Domain;
 using Xunit;
 
@@ -40,5 +43,32 @@ public class RandomPickerTests
 
         // assert that a 'duplicate participant' exception is thrown
         Assert.Throws<DuplicateParticipantsException>(() => picker.PickParticipant(participants));
+    }
+
+    [Fact]
+    public void Fewer_than_two_participants_is_invalid()
+    {
+        // arrange participants list with one participant
+        var participants = new[]
+        {
+            new Participant("Fred"),
+        };
+        var picker = new RandomPicker();
+
+        // assert that a 'too few participants' exception is thrown
+        Assert.Throws<TooFewParticipantsException>(() => picker.PickParticipant(participants));
+    }
+
+    [Fact]
+    public void A_null_participant_list_is_invalid()
+    {
+        // arrange a null participants list
+        List<Participant>? participants = null;
+        var picker = new RandomPicker();
+
+        // assert that an 'agrument null' exception is thrown. Suppressing compiler warning CS8640 as we are passing a null reference by design!
+#pragma warning disable CS8604 //
+        Assert.Throws<ArgumentNullException>(() => picker.PickParticipant(participants));
+#pragma warning restore CS8604 
     }
 }
