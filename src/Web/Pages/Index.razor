@@ -4,9 +4,16 @@
 
 <h1>Welcome to the tea round picker. Shall we begin...</h1>
 
-<input type="text" value=@ParticipantName />
+<input type="text" @bind=NewParticipant />
 
 <button @onclick="AddParticipant" >Add Participant</button>
+
+<ul>
+    @foreach (var participant in Participants)
+    {
+        <li>@participant</li>
+    }
+</ul>
 
 <div>
     <button @onclick="PickParticipant">Pick!</button>
@@ -14,12 +21,18 @@
 
 @code {
     [Parameter]
-    public string? ParticipantName { get; set; }
+    public string? NewParticipant { get; set; }
+
+    private List<string> Participants = new List<string>();
 
     private void AddParticipant()
     {
+        if (NewParticipant != null)
+        {
+            Participants.Add(NewParticipant);
+        }
 
-
+        NewParticipant = string.Empty;
     }
 
     private void PickParticipant()
