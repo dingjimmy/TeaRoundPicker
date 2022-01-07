@@ -1,4 +1,6 @@
-﻿namespace TeaRoundPicker.Domain;
+﻿using System;
+
+namespace TeaRoundPicker.Domain;
 
 /// <summary>
 /// Represents an individual team member, who is participating in the tea round.
@@ -23,5 +25,13 @@ public class Participant : Entity<string>
         }
 
         Name = name;
+    }
+
+    /// <summary>
+    /// Returns the name of the participant.
+    /// </summary>
+    public override string ToString()
+    {
+        return Name;
     }
 }

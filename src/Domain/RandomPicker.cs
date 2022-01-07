@@ -34,8 +34,7 @@ public class RandomPicker : IPicker
 
     private static Participant PickParticipant_Internal(IList<Participant> participants)
     {
-        var rng = new Random()
-           ;
+        var rng = new Random();
         var i = rng.Next(0, participants.Count - 1);
 
         return participants[i];
