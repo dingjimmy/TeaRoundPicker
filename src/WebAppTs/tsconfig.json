@@ -5,7 +5,7 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "es5",
-    "outDir": "../wwwroot/scripts"
+    "outDir": "wwwroot/scripts"
   },
   "exclude": [
     "node_modules",
