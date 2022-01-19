@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaRoundPicker.Domain.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaRoundPicker.ConsoleApp", "src\ConsoleApp\TeaRoundPicker.ConsoleApp.csproj", "{4FDDA031-15D2-4E99-961F-3B9D177C4488}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "TeaRoundPicker.React", "src\ReactApp\TeaRoundPicker.React.esproj", "{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,12 @@ Global
 		{4FDDA031-15D2-4E99-961F-3B9D177C4488}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FDDA031-15D2-4E99-961F-3B9D177C4488}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FDDA031-15D2-4E99-961F-3B9D177C4488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{CAAEE010-B435-467D-88A4-E1DEEEDA17B3} = {51AA3E4B-A5EE-4AAA-8C0A-6B3982F034FC}
 		{143C1D1C-82EC-4C36-9CA9-2040307967F8} = {CAFA3052-5A39-4388-A34D-823BF64852EC}
 		{4FDDA031-15D2-4E99-961F-3B9D177C4488} = {51AA3E4B-A5EE-4AAA-8C0A-6B3982F034FC}
+		{A98EEE8B-0BB5-4E44-A97B-FDB7784A2C56} = {51AA3E4B-A5EE-4AAA-8C0A-6B3982F034FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {55B60BB0-B42D-482C-A88C-7E2BC92A723D}
