@@ -10,7 +10,7 @@ namespace TeaRoundPicker.Service.Controllers
     [ApiController]
     public class TeaRoundPickerController : ControllerBase
     {
-        private readonly List<Session> _Sessions;
+        private readonly List<Session> _Sessions = new();
 
         /// <summary>
         /// Returns a list of all sessions. 

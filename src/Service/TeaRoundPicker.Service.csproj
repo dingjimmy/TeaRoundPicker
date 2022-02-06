@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Domain\TeaRoundPicker.Domain.csproj" />
+    <ProjectReference Include="..\Domain\TeaRoundPicker.Domain.csproj" />
   </ItemGroup>
 
 </Project>
