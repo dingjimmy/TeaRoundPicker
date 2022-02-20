@@ -10,20 +10,32 @@ namespace TeaRoundPicker.Service.Controllers
     [ApiController]
     public class TeaRoundPickerController : ControllerBase
     {
-        private readonly List<Session> _Sessions = new();
+        private static readonly List<Session> _Sessions = new()
+        {
+            new Session("Test Session 1"),
+            new Session("Test Session 2"),
+            new Session("Test Session 3"),
+            new Session("Test Session 4"),
+            new Session("Test Session 5"),
+        };
 
         /// <summary>
         /// Returns a list of all sessions. 
         /// </summary>
         [HttpGet]
-        public IEnumerable<Session> Get()
+        public IActionResult GetSessions()
         {
-            return new Session[] 
-            { 
-                new Session("foo"), new Session("bar"), new Session("fred"), new Session("dave")
-            };
+            return Ok(new GetSessionsResponse(_Sessions.ToArray()));
         }
 
+        /// <summary>
+        /// Returns the session specified by the given id. 
+        /// </summary>
+        [HttpGet("{id}")]
+        public IActionResult GetSession(Guid id)
+        {
+            return Ok(new GetSessionResponse(_Sessions.First(x => x.Id == id)));
+        }
 
         /// <summary>
         /// Create new tea round picker session
@@ -31,30 +43,42 @@ namespace TeaRoundPicker.Service.Controllers
         /// <param name=""></param>
         /// <returns>A new, empty session</returns>
         [HttpPost]
-        public Session Post([FromBody] NewSessionRequest request)
+        public IActionResult CreateSession([FromBody] NewSessionRequest request)
         {
-            return new Session(request.Title);
+            var session = new Session(request.Title);
+
+            _Sessions.Add(session);
+
+            return Created($"{Request.Path}/{session.Id}",  new NewSessionResponse() 
+            {
+                Session = session
+            });
         }
 
-        // GET api/<ParticipantsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        /// <summary>
+        /// Add participant to an existing session.
+        /// </summary>
+        /// <param name="id">Id of an existing session.</param>
+        /// <returns></returns>
+        [HttpPost("{id}/participant")]
+        public IActionResult CreateParticipant(Guid sessionId, string participantName)
         {
-            return "value";
-        }
+            var session = _Sessions
+                .First(x => x.Id == sessionId);
 
-        // PUT api/<ParticipantsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            session.Participants
+                .Add(new Participant(participantName));
 
-        // DELETE api/<ParticipantsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Created($"{Request.Path}/{sessionId}/{participantName}", null); 
         }
     }
+/*
+ * # Get participants for session
+ * /session/{id}/participant [GET]
+ * 
+ * # Pick participant and close session (creates a pick resurce)
+ *  /session/{id}/pick [POST]
+ */
 
     public class NewSessionRequest
     {
@@ -67,23 +91,47 @@ namespace TeaRoundPicker.Service.Controllers
             Title = title;
         }
     }
+
+    public enum SessionError
+    {
+        None = 0,
+        SessionDoesNotExist = 1
+    }
+
+    public class SessionResponseBase
+    {
+        public SessionError ErrorCode { get; set; } = SessionError.None;
+    }
+
+    public class GetSessionResponse
+    {
+        public Session Session { get; set; }
+
+        public GetSessionResponse(Session session)
+        {
+            Session = session;
+        }
+    }
+
+    public class GetSessionsResponse
+    {
+        public Session[] Sessions { get; set; }
+
+        public GetSessionsResponse(Session[] sessions)
+        {
+            Sessions = sessions;
+        }
+    }
+
+    public class NewSessionResponse : SessionResponseBase
+    {
+        public Session? Session { get; set; }
+    }
+
+    public class AddParticipantResponse : SessionResponseBase
+    {
+
+    }
+
+
 }
-
-
-
-/* 
- * # Get a list of all sessions
- * /session [GET]
- * 
- * # Create new tea round picker session
- * /session [POST]
- * 
- * # Add participant to a session
- * /session/{id}/participant [POST]
- * 
- * # Get participants for session
- * /session/{id}/participant [GET]
- * 
- * # Pick participant and close session (creates a pick resurce)
- *  /session/{id}/pick [POST]
- *  
